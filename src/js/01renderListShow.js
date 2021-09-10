@@ -31,5 +31,6 @@ function renderListShow() {
     seriesListHtml.appendChild(newItemList);
 
   }
-
+  paintFavList();
+  handleClickLi();
 }
