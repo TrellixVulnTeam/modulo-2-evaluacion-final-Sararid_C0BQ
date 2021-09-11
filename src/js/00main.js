@@ -12,12 +12,12 @@ const favoriteListHtml = document.querySelector('.js_favoriteList');
 
 const placeholderImage = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
-let listSeries = [];
+const errorMessage = document.querySelector('.js_errorMessage');
 
+let listSeries = [];
 let favoriteSeries = [];
 
-
-//CREAR FUNCTIONS FETCH 
+//CREAR FUNCTION FETCH 
 
 function handleApiFetch(e) {
   e.preventDefault();
@@ -36,10 +36,13 @@ function handleApiFetch(e) {
       });
 
       renderListShow();
-      //.catch(error => console.log(`Ha sucedido un error: ${error}`));
-    });
 
+    })
+
+    .catch(error => errorMessage.innerHTML = `Ha sucedido un error: ${error}`);
 }
+
+//pintar la seie de  la busqueda
 function renderListShow() {
   seriesListHtml.innerHTML = "";
 
@@ -48,11 +51,10 @@ function renderListShow() {
     const movieName = eleInList.name;
     const movieId = eleInList.id;
 
-    let newItemList = document.createElement('li');
-    let img = document.createElement('img');
-    let textName = document.createElement('p');
-
-    let textField = document.createTextNode(movieName);
+    const newItemList = document.createElement('li');
+    const img = document.createElement('img');
+    const textName = document.createElement('p');
+    const textField = document.createTextNode(movieName);
 
     newItemList.id = movieId;
     newItemList.className = 'styleList js_li';

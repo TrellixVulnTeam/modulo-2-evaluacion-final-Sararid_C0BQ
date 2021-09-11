@@ -2,31 +2,30 @@
 
 function handleFav(e) {
   const clickedId = parseInt(e.currentTarget.id);
-  console.log(clickedId)
+  //console.log(clickedId);
 
-  // 83 --> Busco en la lista de favoritos (la peli seleccionada por el usuario esta ya en la lista de favorito) -- el elemento con el mismo id que el elemento en la lista principal 
+  // Busco la peli seleccionada por el usuario si esta ya en la lista de favorito
   const favFound = favoriteSeries.findIndex((fav) => {
     return fav.id === clickedId;
   });
 
 
-  /// 89 estoy comprobando si la peli esta en la lista da fav, aqui la condicion es que no lo esta , y lo añado a la lista de favoritos 
+  ///  estoy comprobando si la peli esta en la lista da fav, aqui la condicion es que no lo esta , y lo añado a la lista de favoritos 
   if (favFound === -1) {
     const showEle = listSeries.find((ele) => {
       return ele.id === clickedId;
     });
     favoriteSeries.push(showEle);
-    console.log(favoriteSeries);
+    // console.log(favoriteSeries);
 
-    //96 si la peli  esta en la lista de favoritos , lo quito 
+    //si la peli  esta en la lista de favoritos , lo quito 
   } else {
     favoriteSeries.splice(favFound, 1);
-    console.log(favoriteSeries);
+    // console.log(favoriteSeries);
   }
 
-  //103 si no pongo la funcion de pintar lista fav(paintFavList()), el codigo funciona pero no pinta en el html , mirar el console.log
   renderFavList(); //esto pinta 
-
+  setInLocalStorage(); //esto guarda 
 }
 
 function renderFavList() {
@@ -34,10 +33,8 @@ function renderFavList() {
   for (let fav of favoriteSeries) {
 
     const nameShow = fav.name;
-
     const image = fav.image;
     const id = fav.id;
-
     let getImage = '';
 
     let newItemList = document.createElement('li');
@@ -48,7 +45,7 @@ function renderFavList() {
     newItemList.id = id;
     newItemList.className = "styleListFav js_li";
 
-    /// si la imagen no se encuentra en jason ponner un placeholder o clase fav 
+
     if (image !== null) {
       getImage = image.medium;
       img.src = getImage;
@@ -59,11 +56,11 @@ function renderFavList() {
     img.alt = nameShow;
     textName.appendChild(textField);
     newItemList.append(textName, img);
-    favoriteListHtml.appendChild(newItemList)
+    favoriteListHtml.appendChild(newItemList);
 
   }
-
-  //  handleClickLi(); esto es le quiero dar sobre la foto area que aprece en ellistado de favoritos
+  //esto es le quiero dar sobre la foto area que aprece en el listado de favoritos 
+  handleClickLi();
 
 }
 
