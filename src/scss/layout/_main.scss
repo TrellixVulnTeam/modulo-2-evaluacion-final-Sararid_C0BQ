@@ -2,6 +2,14 @@
   background-color: $red;
   color: white;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  @media all and (max-width: 768px) {
+    margin-right: 15px;
+  }
 }
 
 .styleListFav {
@@ -9,11 +17,14 @@
   color: $red;
   list-style: none;
   margin-top: 20px;
-}
-
-.styleFavorite {
-  background-color: white;
-  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  @media all and (max-width: 768px) {
+    margin-right: 15px;
+  }
 }
 
 .section {
@@ -26,11 +37,20 @@
   &__container1 {
     width: 100%;
     background-color: $red;
-
     display: flex;
     justify-content: space-around;
   }
-
+  &__container2 {
+    &--styleLi {
+      @media all and (max-width: 768px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
   &__form {
     display: flex;
     flex-direction: column;
@@ -49,15 +69,39 @@
   }
 }
 
-/*   &__container3 {
-    position: absolute;
-    top: 20%;
-    left: 0;
-    border: solid 2px black;
-  }*/
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 50px;
   grid-auto-rows: auto;
+  @media all and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.styleLiFavorite {
+  border: solid 2px black;
+  @media all and (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.style__title {
+  @media all and (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.styleBtn {
+  width: 80px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: red;
+  font-family: inherit;
+  color: black;
+  background-color: white;
 }

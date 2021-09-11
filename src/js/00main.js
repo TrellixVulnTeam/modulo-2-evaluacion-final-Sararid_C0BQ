@@ -44,7 +44,7 @@ function handleApiFetch(e) {
 
 //pintar la seie de  la busqueda
 function renderListShow() {
-  seriesListHtml.innerHTML = "";
+  seriesListHtml.innerHTML = '';
 
   for (let eleInList of listSeries) {
 
