@@ -37,13 +37,16 @@ function renderFavList() {
     const id = fav.id;
     let getImage = '';
 
-    let newItemList = document.createElement('li');
-    let img = document.createElement('img');
-    let textName = document.createElement('p');
-    let textField = document.createTextNode(nameShow);
+    const newItemList = document.createElement('li');
+    const img = document.createElement('img');
+    const textName = document.createElement('p');
+    const textField = document.createTextNode(nameShow);
 
     newItemList.id = id;
     newItemList.className = "styleListFav js_li";
+
+    const removeFav = document.createElement('i');
+    removeFav.className = 'fas fa-times-circle styleRemove';
 
 
     if (image !== null) {
@@ -55,7 +58,7 @@ function renderFavList() {
     }
     img.alt = nameShow;
     textName.appendChild(textField);
-    newItemList.append(textName, img);
+    newItemList.append(textName, img, removeFav);
     favoriteListHtml.appendChild(newItemList);
 
   }
