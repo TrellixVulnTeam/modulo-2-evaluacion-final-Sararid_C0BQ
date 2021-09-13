@@ -2,13 +2,9 @@
 
 function handleFav(e) {
   const clickedId = parseInt(e.currentTarget.id);
-  //console.log(clickedId);
-
-  // Busco la peli seleccionada por el usuario si esta ya en la lista de favorito
   const favFound = favoriteSeries.findIndex((fav) => {
     return fav.id === clickedId;
   });
-
 
   ///  estoy comprobando si la peli esta en la lista da fav, aqui la condicion es que no lo esta , y lo añado a la lista de favoritos 
   if (favFound === -1) {
@@ -62,7 +58,7 @@ function renderFavList() {
     favoriteListHtml.appendChild(newItemList);
 
   }
-  //esto es le quiero dar sobre la foto area que aprece en el listado de favoritos 
+  //para que la serie que esta en fav se quite de la lista de fav, cuando clicko sobre ella
   handleClickLi();
 
 }
